@@ -3,6 +3,7 @@ Lab 2
 '''
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 ######### Part 1 ###########
 
@@ -36,26 +37,13 @@ print(iris1["petal_length"])
 
 '''
 # YOUR CODE GOES HERE
-print(iris1.petal_length.mean())
-print(iris1.petal_length.std())
-print(iris1.sepal_width.mean())
-print(iris1.sepal_width.std())
-print(iris1.petal_length.mean())
-print(iris1.petal_length.std())
-print(iris1.petal_width.mean())
-print(iris1.petal_width.std())
+print(iris1.mean())
+print(iris1.std())
 
 print(iris1["petal_length"][:100].mean())
 
-print(iris1.sepal_length.max())
-print(iris1.sepal_length.min())
-print(iris1.sepal_width.max())
-print(iris1.sepal_width.min())
-print(iris1.petal_length.max())
-print(iris1.petal_length.min())
-print(iris1.petal_width.max())
-print(iris1.petal_width.min())
-
+print(iris1.max())
+print(iris1.min())
 
 '''
     4)  print out the frequency count of each class (setosa, versicolor, virginica)
@@ -73,9 +61,11 @@ print(iris1["species"].value_counts())
 
 '''
 # YOUR CODE GOES HERE
-iris1["petal_length"].drop_duplicates()
-print(iris1)
-print(len(iris1))
+petalDupesDropped = iris1.drop_duplicates(subset='petal_length', keep='last')
+print(petalDupesDropped)
+print(len(petalDupesDropped))
+print(petalDupesDropped.mean())
+print(petalDupesDropped.species.value_counts())
 
 ######### Part 2 ###########
 '''
@@ -83,8 +73,8 @@ print(len(iris1))
 
 '''
 # YOUR CODE GOES HERE
-
-
+iris1.plot()
+#plt.show()
 
 '''
     2)  plot the bar graph of your data
@@ -92,6 +82,8 @@ print(len(iris1))
     
 '''
 # YOUR CODE GOES HERE
+iris1.plot.bar()
+#plt.show()
 
 '''
     4)  plot the histogram graph for "petal_length" feature
@@ -99,7 +91,8 @@ print(len(iris1))
     
 '''
 # YOUR CODE GOES HERE
-
+iris1.plot.hist()
+#plt.show()
 
 '''
     5)  Use the bar graph to show the frequency of each label (class)
@@ -108,19 +101,23 @@ print(len(iris1))
 
 
 ######### Part 3 ###########
+iris1.species.value_counts().plot.bar()
+#plt.show()
 
 '''
     1) Download the iris-data-2 from Canvas, use pandas.read_csv to load it.
 
 '''
 # YOUR CODE GOES HERE
+iris2 = pd.read_csv("iris-data-2.csv")
 
 '''
     2) Use pandas.DataFrame.drop_duplicates to drop duplications in "ID" (keep the first instance) and save the resulted data frame in a new datafram (df). Print out the shape of df.
 
 '''
 # YOUR CODE GOES HERE
-
+df = iris2.drop_duplicates(subset='ID', keep='first')
+print(df.shape)
 
 '''
     3)  plot the bar graph for df['color']
@@ -128,7 +125,8 @@ print(len(iris1))
     
 '''
 # YOUR CODE GOES HERE
-
+df['color'].value_counts().plot.bar()
+#plt.show()
 
 '''
     4)  How many missing values we have in 'color' column?
@@ -136,8 +134,8 @@ print(len(iris1))
     
 '''
 # YOUR CODE GOES HERE
-
-
+dfDropped = df['color'].dropna()
+print(len(df) - len(dfDropped))
 
 '''
     5)  Make the values in 'color' column to be consistant and remove the unkown values
