@@ -2,6 +2,8 @@
 Lab 2
 '''
 
+import pandas as pd
+
 ######### Part 1 ###########
 
 
@@ -10,7 +12,7 @@ Lab 2
 
 '''
 # YOUR CODE GOES HERE
-
+iris1 = pd.read_csv('iris-data-1.csv', index_col=0)
 
 '''
     2) after loading the data:
@@ -21,7 +23,11 @@ Lab 2
        print out the petal_length for the last sample
 '''
 # YOUR CODE GOES HERE
-
+print(iris1.index, iris1.columns, iris1.values)
+print(len(iris1))
+print(iris1.values[-50:])
+print(iris1.species.unique())
+print(iris1["petal_length"])
 
 '''
     3) print out the mean and std of each feature (sepal_length, sepal_width, petal_length, petal_width)
