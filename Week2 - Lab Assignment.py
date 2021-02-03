@@ -12,7 +12,7 @@ import pandas as pd
 
 '''
 # YOUR CODE GOES HERE
-iris1 = pd.read_csv('iris-data-1.csv', index_col=0)
+iris1 = pd.read_csv('iris-data-1.csv')
 
 '''
     2) after loading the data:
@@ -36,6 +36,26 @@ print(iris1["petal_length"])
 
 '''
 # YOUR CODE GOES HERE
+print(iris1.petal_length.mean())
+print(iris1.petal_length.std())
+print(iris1.sepal_width.mean())
+print(iris1.sepal_width.std())
+print(iris1.petal_length.mean())
+print(iris1.petal_length.std())
+print(iris1.petal_width.mean())
+print(iris1.petal_width.std())
+
+print(iris1["petal_length"][:100].mean())
+
+print(iris1.sepal_length.max())
+print(iris1.sepal_length.min())
+print(iris1.sepal_width.max())
+print(iris1.sepal_width.min())
+print(iris1.petal_length.max())
+print(iris1.petal_length.min())
+print(iris1.petal_width.max())
+print(iris1.petal_width.min())
+
 
 '''
     4)  print out the frequency count of each class (setosa, versicolor, virginica)
@@ -43,7 +63,7 @@ print(iris1["petal_length"])
 
 '''
 # YOUR CODE GOES HERE
-
+print(iris1["species"].value_counts())
 
 '''
     5) Use pandas.DataFrame.drop_duplicates to drop duplications in "petal_length" feature (keep the last instance) and print out the resulted data
@@ -53,6 +73,9 @@ print(iris1["petal_length"])
 
 '''
 # YOUR CODE GOES HERE
+iris1["petal_length"].drop_duplicates()
+print(iris1)
+print(len(iris1))
 
 ######### Part 2 ###########
 '''
