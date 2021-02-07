@@ -74,7 +74,7 @@ print(petalDupesDropped.species.value_counts())
 '''
 # YOUR CODE GOES HERE
 iris1.plot()
-#plt.show()
+plt.show()
 
 '''
     2)  plot the bar graph of your data
@@ -83,7 +83,7 @@ iris1.plot()
 '''
 # YOUR CODE GOES HERE
 iris1.plot.bar()
-#plt.show()
+plt.show()
 
 '''
     4)  plot the histogram graph for "petal_length" feature
@@ -92,17 +92,16 @@ iris1.plot.bar()
 '''
 # YOUR CODE GOES HERE
 iris1.plot.hist()
-#plt.show()
+plt.show()
 
 '''
     5)  Use the bar graph to show the frequency of each label (class)
 '''
 # YOUR CODE GOES HERE
-
+iris1.species.value_counts().plot.bar()
+plt.show()
 
 ######### Part 3 ###########
-iris1.species.value_counts().plot.bar()
-#plt.show()
 
 '''
     1) Download the iris-data-2 from Canvas, use pandas.read_csv to load it.
@@ -126,7 +125,7 @@ print(df.shape)
 '''
 # YOUR CODE GOES HERE
 df['color'].value_counts().plot.bar()
-#plt.show()
+plt.show()
 
 '''
     4)  How many missing values we have in 'color' column?
@@ -143,6 +142,10 @@ print(len(df) - len(dfDropped))
        
 '''
 # YOUR CODE GOES HERE
+df3 = df[df.color.notnull()]
+df3['color'].str.lower()
+df3 = df3[df3.color.isin(['red', 'purple', 'blue', 'pink'])]
+print(df3)
 
 
 ##########Part 4 ###########
@@ -152,6 +155,8 @@ print(len(df) - len(dfDropped))
 
 '''
 # YOUR CODE GOES HERE
+iris2 = pd.read_csv("iris-data-2.csv")
+df = iris2.drop_duplicates(subset=['ID'], keep='first', inplace=False)
 
 '''
     1) Make the values in 'color' column consistant and replace missing values with 'pink' 
@@ -159,3 +164,6 @@ print(len(df) - len(dfDropped))
     
 '''
 # YOUR CODE GOES HERE
+df['color'].fillna('pink')
+df['color'].str.lower()
+print(df)
