@@ -28,7 +28,7 @@ print(iris1.index, iris1.columns, iris1.values)
 print(len(iris1))
 print(iris1.values[-50:])
 print(iris1.species.unique())
-print(iris1["petal_length"])
+print("last petal_len", iris1['petal_length'].iloc[-1])
 
 '''
     3) print out the mean and std of each feature (sepal_length, sepal_width, petal_length, petal_width)
