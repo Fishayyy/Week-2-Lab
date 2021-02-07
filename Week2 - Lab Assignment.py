@@ -24,11 +24,11 @@ iris1 = pd.read_csv('iris-data-1.csv')
        print out the petal_length for the last sample
 '''
 # YOUR CODE GOES HERE
-print(iris1.index, iris1.columns, iris1.values)
-print(len(iris1))
-print(iris1.values[-50:])
-print(iris1.species.unique())
-print(iris1["petal_length"])
+print(f"Range Info:\n{iris1.index}\n\nColumns Info:\n{iris1.columns}\n\nValues Info:\n{iris1.values}\n")
+print(f"Dataset Length: {len(iris1)}\n")
+print(f"Last 50 Values:\n{iris1.values[-50:]}\n")
+print(f"Species Labels: {iris1.species.unique()}\n")
+print(f"Last Sample Petal Length: {iris1.loc[iris1.index[-1],'petal_length']}\n")
 
 '''
     3) print out the mean and std of each feature (sepal_length, sepal_width, petal_length, petal_width)
@@ -37,13 +37,15 @@ print(iris1["petal_length"])
 
 '''
 # YOUR CODE GOES HERE
-print(iris1.mean())
-print(iris1.std())
+print("Mean Values:")
+print(f"{iris1.mean()}\n")
+print("Standard Deviations:")
+print(f"{iris1.std()}\n")
 
-print(iris1["petal_length"][:100].mean())
+print(f"Mean Petal Length (First 100 Samples): {iris1.loc[0:99, 'petal_length'].mean()}\n")
 
-print(iris1.max())
-print(iris1.min())
+print(f"Max Values:\n{iris1.max()}\n")
+print(f"Min Values:\n{iris1.min()}\n")
 
 '''
     4)  print out the frequency count of each class (setosa, versicolor, virginica)
@@ -51,7 +53,7 @@ print(iris1.min())
 
 '''
 # YOUR CODE GOES HERE
-print(iris1["species"].value_counts())
+print(f"Class Frequencies:\n{iris1['species'].value_counts()}")
 
 '''
     5) Use pandas.DataFrame.drop_duplicates to drop duplications in "petal_length" feature (keep the last instance) and print out the resulted data
