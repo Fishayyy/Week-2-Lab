@@ -4,6 +4,7 @@ Lab 2
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 ######### Part 1 ###########
 
@@ -100,7 +101,8 @@ plt.show()
     
 '''
 # YOUR CODE GOES HERE
-iris1['petal_length'].plot.hist()
+data = iris1['petal_length']
+plt.hist(data, bins = np.arange(min(data), max(data) + 1, 0.1))
 plt.title("Iris1 Petal Length")
 plt.xlabel("Centimeters (cm)")
 plt.show()
