@@ -73,10 +73,15 @@ print(f"Class frequencies:\n{petalDupesDropped.species.value_counts()}\n")
 ######### Part 2 ###########
 '''
     1)  Use pandas.DataFrame.plot() to plot all of the columns in a single graph. What is the X axis and Y axis on the rrsulted graph?
+    
+    X axis == The samples number in the relative dataset
+    Y axis == The values of sepal width petal length
 
 '''
 # YOUR CODE GOES HERE
 iris1.plot()
+plt.title("Iris1 Dataframe Graph")
+plt.xlabel('Sample Number')
 plt.show()
 
 '''
@@ -86,6 +91,7 @@ plt.show()
 '''
 # YOUR CODE GOES HERE
 iris1.plot.bar()
+plt.title("Iris1 Dataframe Bar Graph")
 plt.show()
 
 '''
@@ -94,7 +100,9 @@ plt.show()
     
 '''
 # YOUR CODE GOES HERE
-iris1.plot.hist()
+iris1['petal_length'].plot.hist()
+plt.title("Iris1 Petal Length")
+plt.xlabel("Centimeters (cm)")
 plt.show()
 
 '''
@@ -102,6 +110,7 @@ plt.show()
 '''
 # YOUR CODE GOES HERE
 iris1.species.value_counts().plot.bar()
+plt.title("Iris1 Species Frequencies")
 plt.show()
 
 ######### Part 3 ###########
@@ -128,6 +137,7 @@ print(f"Dataframe shape: {df.shape}\n")
 '''
 # YOUR CODE GOES HERE
 df['color'].value_counts().plot.bar()
+plt.title("Iris2 Color Frequencies")
 plt.show()
 
 '''
