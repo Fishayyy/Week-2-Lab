@@ -54,7 +54,7 @@ print(f"Min Values:\n{iris1.min()}\n")
 
 '''
 # YOUR CODE GOES HERE
-print(f"Class Frequencies:\n{iris1['species'].value_counts()}")
+print(f"Class Frequencies:\n{iris1['species'].value_counts()}\n")
 
 '''
     5) Use pandas.DataFrame.drop_duplicates to drop duplications in "petal_length" feature (keep the last instance) and print out the resulted data
@@ -65,10 +65,10 @@ print(f"Class Frequencies:\n{iris1['species'].value_counts()}")
 '''
 # YOUR CODE GOES HERE
 petalDupesDropped = iris1.drop_duplicates(subset='petal_length', keep='last')
-print(petalDupesDropped)
-print(len(petalDupesDropped))
-print(petalDupesDropped.mean())
-print(petalDupesDropped.species.value_counts())
+print(f"Dataset with duplicate petal_length's removed:\n{petalDupesDropped}\n")
+print(f"Dataset length: {len(petalDupesDropped)}\n")
+print(f"Mean values:\n{petalDupesDropped.mean()}\n")
+print(f"Class frequencies:\n{petalDupesDropped.species.value_counts()}\n")
 
 ######### Part 2 ###########
 '''
@@ -119,7 +119,7 @@ iris2 = pd.read_csv("iris-data-2.csv")
 '''
 # YOUR CODE GOES HERE
 df = iris2.drop_duplicates(subset='ID', keep='first')
-print(df.shape)
+print(f"Dataframe shape: {df.shape}\n")
 
 '''
     3)  plot the bar graph for df['color']
@@ -137,7 +137,7 @@ plt.show()
 '''
 # YOUR CODE GOES HERE
 dfDropped = df['color'].dropna()
-print(len(df) - len(dfDropped))
+print(f"Number of missing color values: {len(df) - len(dfDropped)}\n")
 
 '''
     5)  Make the values in 'color' column to be consistant and remove the unkown values
@@ -148,7 +148,7 @@ print(len(df) - len(dfDropped))
 df3 = df[df.color.notnull()]
 df3['color'].str.lower()
 df3 = df3[df3.color.isin(['red', 'purple', 'blue', 'pink'])]
-print(df3)
+print(f"Dataframe with consistant color values and unknowns removed:\n{df3}\n")
 
 
 ##########Part 4 ###########
@@ -169,4 +169,4 @@ df = iris2.drop_duplicates(subset=['ID'], keep='first', inplace=False)
 # YOUR CODE GOES HERE
 df['color'].fillna('pink')
 df['color'].str.lower()
-print(df)
+print(f"Dataframe with consistant color values and missing values replaced:\n{df}\n")
